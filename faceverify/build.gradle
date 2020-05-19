@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 29
@@ -27,6 +28,20 @@ android {
         noCompress "tflite"
         noCompress "lite"
     }
+}
+
+publish {
+    def groupProjectID = 'co.potatoproject.faceverify'
+    def artifactProjectID = 'faceverify'
+    def publisherVersionID = '0.1.0'
+
+    userOrg = 'sphericalkat'
+    repoName = 'faceverify'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publisherVersionID
+    desc = 'Compare two faces and verify that they\'re the same'
+    website = 'https://github.com/ATechnoHazard/faceverify-lib'
 }
 
 dependencies {
