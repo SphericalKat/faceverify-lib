@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9982ff08-2737-4156-b981-932f3697b4ae" name="Default Changelist" comment="" />
+    <list default="true" id="9982ff08-2737-4156-b981-932f3697b4ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceverify/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceverify/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceverify/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceverify/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceverify/.idea/modules/faceverify-lib.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceverify/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceverify/.idea/workspace.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
