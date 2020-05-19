@@ -21,6 +21,16 @@ dependencies {
 }
 ```
 
+And finally, add this to the app-level `build.gradle` to ensure uncompressed models
+```gradle
+android {
+    ...
+    aaptOptions {
+        noCompress "tflite"
+    }
+}
+```
+
 ## Usage
 ### Initialize the library
 ```kotlin
