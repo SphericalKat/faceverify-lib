@@ -4,10 +4,12 @@ import android.content.res.AssetManager
 import android.graphics.Bitmap
 import co.potatoproject.faceverify.utils.FaceUtils
 import org.tensorflow.lite.Interpreter
+import org.tensorflow.lite.gpu.GpuDelegate
 import kotlin.math.pow
 
 class MobileFaceNet(assetManager: AssetManager?) {
     private val interpreter: Interpreter
+
     fun compare(bitmap1: Bitmap?, bitmap2: Bitmap?): Float {
         val bitmapScale1 = Bitmap.createScaledBitmap(
             bitmap1!!,
@@ -21,11 +23,12 @@ class MobileFaceNet(assetManager: AssetManager?) {
             INPUT_IMAGE_SIZE,
             true
         )
-        val datasets =
-            getTwoImageDatasets(bitmapScale1, bitmapScale2)
+
+        val dataset =
+                getTwoImageDatasets(bitmapScale1, bitmapScale2)
         val embeddings =
             Array(2) { FloatArray(192) }
-        interpreter.run(datasets, embeddings)
+        interpreter.run(dataset, embeddings)
         FaceUtils.l2Normalize(embeddings, 1e-10)
         return evaluate(embeddings)
     }
@@ -85,9 +88,10 @@ class MobileFaceNet(assetManager: AssetManager?) {
     }
 
     init {
-        val options =
-            Interpreter.Options()
-        options.setNumThreads(4)
+        val options = Interpreter.Options()
+        val delegate = GpuDelegate()
+        options.addDelegate(delegate)
+        options.setNumThreads(8)
         interpreter = Interpreter(
             FaceUtils.loadModelFile(
                 assetManager!!,

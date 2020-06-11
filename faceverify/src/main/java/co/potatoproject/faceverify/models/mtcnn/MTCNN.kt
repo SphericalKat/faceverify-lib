@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.Point
 import co.potatoproject.faceverify.utils.FaceUtils
 import org.tensorflow.lite.Interpreter
+import org.tensorflow.lite.gpu.GpuDelegate
 import java.util.*
 import kotlin.math.ceil
 import kotlin.math.max
@@ -339,8 +340,9 @@ class MTCNN(assetManager: AssetManager?) {
     }
 
     init {
-        val options =
-            Interpreter.Options()
+        val options = Interpreter.Options()
+        val delegate = GpuDelegate()
+        options.addDelegate(delegate)
         options.setNumThreads(4)
         pInterpreter = Interpreter(
             FaceUtils.loadModelFile(
